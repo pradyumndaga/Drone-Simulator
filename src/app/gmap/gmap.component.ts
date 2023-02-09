@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   Input,
-  OnInit,
   ViewChild,
 } from '@angular/core';
 
@@ -12,7 +11,7 @@ import {
   templateUrl: './gmap.component.html',
   styleUrls: ['./gmap.component.scss'],
 })
-export class GmapComponent implements OnInit, AfterViewInit {
+export class GmapComponent implements AfterViewInit {
   @ViewChild('mapContainer', { static: false })
   gmap!: ElementRef;
   @Input() enableSimulationButton = false;
@@ -33,15 +32,18 @@ export class GmapComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit() {
+  /**
+   * @returns void
+   */
+  ngAfterViewInit(): void {
     this.mapInitializer();
   }
 
-  mapInitializer() {
-    /* To check if any markers present.
-        Initialize map w.r.t. marker else, initialize world map */
+  /**
+   * @returns void
+   * @description To check if any markers present. Initialize map w.r.t. marker else, initialize world map
+   */
+  mapInitializer(): void {
     this.mapOptions = {
       center: this.markers[0]
         ? new google.maps.LatLng(
@@ -62,8 +64,11 @@ export class GmapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  animateDrone() {
-    // Initialize all required flags, list, index and constants
+  /**
+   * @returns void
+   * @description Initialize all required flags, list, index and constants
+   */
+  animateDrone(): void {
     this.pauseSimulation = false;
     this.droneCoordMap = [];
     this.droneIdx = 0;
@@ -125,12 +130,21 @@ export class GmapComponent implements OnInit, AfterViewInit {
     this.simulateDrone(this.droneCoordMap, this.droneIdx, 20, this.droneRoute);
   }
 
+  /**
+   *
+   * @param latlngs google.maps.LatLng[]
+   * @param index number
+   * @param wait number
+   * @param line google.maps.Polyline
+   * @returns void
+   * @description Simulation of drone in map
+   */
   simulateDrone(
     latlngs: google.maps.LatLng[],
     index: number,
     wait: number,
     line: google.maps.Polyline
-  ) {
+  ): void {
     // if Simulateion paused, return
     if (this.pauseSimulation) {
       return;
@@ -152,10 +166,12 @@ export class GmapComponent implements OnInit, AfterViewInit {
     }
   }
 
-  pauseOrResume() {
-    // Pause or Resume simulation
+  /**
+   * @returns void
+   * @description Pause / Resume functionality
+   */
+  pauseOrResume(): void {
     this.pauseSimulation = !this.pauseSimulation;
-    // On resume, call simulateDrone
     if (!this.pauseSimulation) {
       this.simulateDrone(
         this.droneCoordMap,
@@ -166,8 +182,11 @@ export class GmapComponent implements OnInit, AfterViewInit {
     }
   }
 
-  enableInputForm() {
-    // Enable flag when user wants to make changes in the input
+  /**
+   * @returns void
+   * @description Enable flag when user wants to make changes in the input
+   */
+  enableInputForm(): void {
     this.enableSimulationButton = false;
   }
 }

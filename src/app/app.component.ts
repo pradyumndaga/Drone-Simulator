@@ -14,8 +14,12 @@ export class AppComponent {
   @ViewChild(UserInputComponent) userInputComponent: UserInputComponent =
     new UserInputComponent(new FormBuilder());
 
-  fetchLatLongData(userData: any) {
-    // Whenever we get new latitude & longitude information from user, clear old markers and add new markers.
+  /**
+   * @returns void
+   * @param userData 
+   * @description Whenever we get new latitude & longitude information from user, clear old markers and add new markers.
+   */
+  fetchLatLongData(userData: any): void {
     this.gmapComponent.markers = [];
     userData.forEach((data: { lat: number; lng: number; time: number }) => {
       this.gmapComponent?.markers.push({

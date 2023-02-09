@@ -47,8 +47,12 @@ export class UserInputComponent implements OnInit {
     fileReader.readAsText(file);
   }
 
-  fetchData(rows: any[]) {
-    // Transform the inputed data from user and emit the data to App Component
+  /**
+   * @returns void
+   * @param rows
+   * @description Transform the inputed data from user and emit the data to App Component
+   */
+  fetchData(rows: any[]): void {
     let rowData: { time: number; lat: number; lng: number }[] = [];
     console.log(rows);
     rows.forEach((row) => {
@@ -57,13 +61,21 @@ export class UserInputComponent implements OnInit {
     this.data.emit(rowData);
   }
 
+  /**
+   *
+   * @returns FormArray
+   * @description Get Markers FormArray
+   */
   markers(): FormArray {
-    // Get Markers FormArray
     return <FormArray>this.inputForm.get('markers');
   }
 
+  /**
+   *
+   * @returns FormGroup
+   * @description Return new Dynamic FormGroup
+   */
   newLatLngFormItem(): FormGroup {
-    // Return new Dynamic FormGroup
     return this.formBuilder.group({
       time: new FormControl(null, Validators.required),
       x_lat: new FormControl(null, Validators.required),
@@ -71,18 +83,28 @@ export class UserInputComponent implements OnInit {
     });
   }
 
-  addLatLngFormItem() {
-    // Add new Dynamic FormGroup
+  /**
+   * @returns void
+   * @description Add new Dynamic FormGroup
+   */
+  addLatLngFormItem(): void {
     this.markers().push(this.newLatLngFormItem());
   }
 
-  removeLatLngFormItem(i: number) {
-    // Remove Dynamic created FormGroup
+  /**
+   * @returns void
+   * @param i number
+   * @description Remove Dynamic created FormGroup
+   */
+  removeLatLngFormItem(i: number): void {
     this.markers().removeAt(i);
   }
 
-  submit() {
-    // If input is valid, call fetchData and hide input fields from UI
+  /**
+   * @returns void
+   * @description If input is valid, call fetchData and hide input fields from UI
+   */
+  submit(): void {
     if (this.inputForm.valid) {
       this.fetchData(this.inputForm.value.markers);
       this.hideInputs = true;
