@@ -1,0 +1,5 @@
+
+<app-gmap [enableSimulationButton]="userInputComponent.hideInputs" ></app-gmap>
+<br>
+<br>
+<app-user-input (data)="fetchLatLongData($event)" [hideInputs]="gmapComponent.enableSimulationButton"></app-user-input>

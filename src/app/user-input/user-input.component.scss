@@ -1,0 +1,71 @@
+.input-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    opacity: 0.7;
+    background-color:azure;
+    border-radius: 0.5rem;
+}
+.file-upload {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background-color:bisque;
+    position: relative;
+    border: solid;
+}
+
+.or {
+    border: solid;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: bisque;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: solid;
+    position: relative;
+    background-color: aliceblue;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.remove-btn {
+    border-radius: 1rem;
+    background-color: red;
+    padding: 0.2rem;
+    font-size: larger;
+    margin: 0.1rem;
+}
+
+.add-btn {
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    font-size:larger;
+    background-color: lightblue;
+    margin-top: 0.3rem;
+}
+
+input {
+    border-radius: 0.25rem;
+    margin: 0.25rem;
+    padding: 0.25rem;
+}
+
+.submit-btn {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 10rem;
+    background-color: bisque;
+}

@@ -1,0 +1,17 @@
+<h1 class="header">Drone Simulator</h1>
+<div #mapContainer id="map"></div>
+
+<div class="tool-bar" *ngIf="enableSimulationButton">
+    <div *ngIf="enableSlider" class="map-controls">
+        <button (click)="pauseOrResume()" [disabled]="!enableSlider">Pause/Resume</button>
+        <input #droneSlider class="droneSlider" type="range" min="0"
+            [max]="droneCoordMap.length" [disabled]="!enableSlider" [(ngModel)]="droneIdx"/>
+    </div>
+    <div *ngIf="!enableSlider">
+        <button  (click)="animateDrone()" [disabled]="enableSlider">Simulate</button><br>
+        <button (click)="enableInputForm()">Add some new Data!!</button>
+    </div>
+</div>
+
+
+

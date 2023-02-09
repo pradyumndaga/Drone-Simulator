@@ -1,0 +1,23 @@
+<div class="input-div" *ngIf="!hideInputs">
+    <input type="file" class="file-upload" (change)="onFileUpload($event)">
+
+    <p class="or">---- OR ----</p>
+
+    <form class="input-form" [formGroup]="inputForm" (ngSubmit)="submit()">
+        <h3>Enter Latitude and Longitute Details</h3>
+        <div formArrayName="markers" class="form-inputs">
+        <div *ngFor="let marker of markers().controls; let i=index" formGroupName="{{i}}">
+            <input formControlName="time" type="datetime" placeholder="time in seconds"/>
+            <input formControlName="x_lat"  type="text" placeholder="Latitude"/>
+            <input formControlName="y_long"  type="text" placeholder="Longitude"/>
+            <button type="button" class="remove-btn" [style.background-color]="i<=1 ? 'gray' : 'red'" [disabled]="i<=1" (click)="removeLatLngFormItem(i)">X</button>  
+        </div>
+        <button type="button" class="add-btn" (click)="addLatLngFormItem()">+</button>
+        </div>
+        <br>
+        <button type="submit" class="submit-btn">Submit</button> 
+    </form>
+    <br><br>
+</div>
+
+
